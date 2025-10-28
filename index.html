@@ -1,24 +1,179 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Flatfile Site</title>
-  <style>
-    body { font-family: sans-serif; max-width: 42em; margin: 2em auto; line-height: 1.6; }
-  </style>
-</head>
-<body>
-  <div id="app">Loading...</div>
-  <script src="https://unpkg.com/snarkdown/dist/snarkdown.umd.js"></script>
-  <script>
-    fetch('content.md')
-      .then(r => r.text())
-      .then(md => {
-        document.getElementById('app').innerHTML = snarkdown(md);
-      })
-      .catch(e => {
-        document.getElementById('app').textContent = 'Error loading content.';
-      });
-  </script>
-</body>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta
+            name="description"
+            content="Minimal, archival websites for artists, galleries and collections — lightweight, accessible and sustainable."
+        />
+        <title>Minimal, Archival Websites</title>
+        <style>
+            :root {
+                --font:
+                    system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+                --max-width: 620px;
+                --text: #222;
+                --line: #ddd;
+                --bg: #fafafa;
+            }
+            html {
+                font-family: var(--font);
+                font-size: 18px;
+                line-height: 1.55;
+                color: var(--text);
+                background: var(--bg);
+                padding: 2rem;
+            }
+            body {
+                max-width: var(--max-width);
+                margin: 0; /* left-aligned page */
+                text-align: left;
+            }
+
+            /* Headings & intro */
+            h1 {
+                font-size: 1.8rem;
+                margin: 0 0 0.25rem;
+                font-weight: 600;
+            }
+            h2 {
+                font-size: 1.05rem;
+                margin: 0 0 1.25rem;
+                font-weight: 400;
+                opacity: 0.75;
+            }
+
+            /* short tag line */
+            strong {
+                display: block;
+                margin: 1.25rem 0 0.5rem;
+            }
+
+            /* content rhythm */
+            p {
+                margin: 1rem 0;
+            }
+            hr {
+                border: 0;
+                border-top: 1px solid var(--line);
+                margin: 2rem 0;
+            }
+
+            /* list style (minimal) */
+            ul {
+                list-style: none;
+                padding: 0;
+                margin: 1.25rem 0;
+            }
+            li {
+                margin: 0.45rem 0;
+                padding-left: 1rem;
+                position: relative;
+            }
+            li::before {
+                content: "–";
+                position: absolute;
+                left: 0;
+                opacity: 0.6;
+            }
+
+            /* quote (reworded and understated) */
+            blockquote {
+                margin: 2rem 0 1.25rem;
+                font-weight: 300;
+                opacity: 0.85;
+                font-style: normal;
+            }
+
+            /* contact button (accessible focus) */
+            a.button {
+                display: inline-block;
+                margin-top: 1.75rem;
+                padding: 0.45rem 0.9rem;
+                border: 1px solid currentColor;
+                border-radius: 4px;
+                text-decoration: none;
+                color: inherit;
+                font-size: 0.95rem;
+            }
+            a.button:focus,
+            a.button:hover {
+                outline: 2px solid currentColor;
+                outline-offset: 3px;
+            }
+
+            /* footer logo */
+            footer {
+                margin-top: 3rem;
+                padding-top: 1.5rem;
+                border-top: 1px solid var(--line);
+            }
+            footer svg {
+                display: block;
+                max-width: 216px;
+                fill: currentColor;
+                opacity: 0.85;
+            }
+
+            /* dark mode */
+            @media (prefers-color-scheme: dark) {
+                :root {
+                    --text: #eee;
+                    --line: #333;
+                    --bg: #111;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Minimal, Archival Websites</h1>
+        <h2>Built for artists, galleries & collections</h2>
+
+        <strong>Lightweight. Accessible. Sustainable.</strong>
+        <p>Websites designed to last — fast, portable and human-readable.</p>
+
+        <hr />
+
+        <ul>
+            <li>Hand-coded with care and clarity</li>
+            <li>Secure and accessible to appropriate standards</li>
+            <li>Ultra-low energy, fast-loading pages</li>
+            <li>Easy to update, archive and preserve</li>
+            <li>Guided by 25 years in digital archives and the arts</li>
+        </ul>
+
+        <hr />
+
+        <p>
+            Systems are refined with local AI to simplify and secure — using new
+            tools to make the simplest, most durable low-tech result.
+        </p>
+        <p>
+            Your system remains yours: clear, portable and built to age
+            gracefully.
+        </p>
+
+        <a
+            class="button"
+            href="mailto:oliver@digitisation.org?subject=Project%20Enquiry"
+            >Contact</a
+        >
+
+        <footer>
+            <blockquote>Built to last. Easy to read. Simple to keep.</blockquote>
+
+            <!-- inline SVG (keeps one request, accessible) -->
+            <svg
+                viewBox="0 0 216 22"
+                role="img"
+                aria-label="Digitisation.org logo"
+            >
+                <title>Digitisation.org</title>
+                <path
+                    d="m 24,21 v -1 h 1 1 v 1 1 h -1 -1 z m 4,0 v -1 h 1 1 v 1 1 h -1 -1 z m 4,0 v -1 h 1 1 v 1 1 h -1 -1 z m 170,0 v -1 h 1 1 v 1 1 h -1 -1 z m 4,0 v -1 h 1 1 v 1 1 h -1 -1 z m 4,0 v -1 h 1 1 v 1 1 h -1 -1 z M 0,17 v -1 h 1 1 v 1 1 H 1 0 Z m 4,0 v -1 h 1 1 v 1 1 H 5 4 Z m 4,0 v -1 h 1 1 v 1 1 H 9 8 Z m 10,0 v -1 h 1 1 v 1 1 h -1 -1 z m 18,0 v -1 h 1 1 v 1 1 h -1 -1 z m 6,0 v -1 h 1 1 v 1 1 h -1 -1 z m 10,0 v -1 h 1 1 v 1 1 h -1 -1 z m 4,0 v -1 h 1 1 v 1 1 h -1 -1 z m 6,0 v -1 h 1 1 v 1 1 h -1 -1 z m 6,0 v -1 h 1 1 v 1 1 h -1 -1 z m 4,0 v -1 h 1 1 v 1 1 h -1 -1 z m 4,0 v -1 h 1 1 v 1 1 h -1 -1 z m 14,0 v -1 h 1 1 v 1 1 h -1 -1 z m 4,0 v -1 h 1 1 v 1 1 h -1 -1 z m 4,0 v -1 h 1 1 v 1 1 h -1 -1 z m 10,0 v -1 h 1 1 v 1 1 h -1 -1 z m 4,0 v -1 h 1 1 v 1 1 h -1 -1 z m 6,0 v -1 h 1 1 v 1 1 h -1 -1 z m 10,0 v -1 h 1 1 v 1 1 h -1 -1 z m 4,0 v -1 h 1 1 v 1 1 h -1 -1 z m 10,0 v -1 h 1 1 v 1 1 h -1 -1 z m 12,0 v -1 h 1 1 v 1 1 h -1 -1 z m 6,0 v -1 h 1 1 v 1 1 h -1 -1 z m 10,0 v -1 h 1 1 v 1 1 h -1 -1 z m 4,0 v -1 h 1 1 v 1 1 h -1 -1 z m 10,0 v -1 h 1 1 v 1 1 h -1 -1 z m 30,0 v -1 h 1 1 v 1 1 h -1 -1 z M 0,13 v -1 h 1 1 v 1 1 H 1 0 Z m 12,0 v -1 h 1 1 v 1 1 h -1 -1 z m 6,0 v -1 h 1 1 v 1 1 h -1 -1 z m 10,0 v -1 h 1 1 v 1 1 h -1 -1 z m 4,0 v -1 h 1 1 v 1 1 h -1 -1 z m 4,0 v -1 h 1 1 v 1 1 h -1 -1 z m 6,0 v -1 h 1 1 v 1 1 h -1 -1 z m 6,0 v -1 h 1 1 v 1 1 h -1 -1 z m 14,0 v -1 h 1 1 v 1 1 h -1 -1 z m 18,0 v -1 h 1 1 v 1 1 h -1 -1 z m 6,0 v -1 h 1 1 v 1 1 h -1 -1 z m 12,0 v -1 h 1 1 v 1 1 h -1 -1 z m 6,0 v -1 h 1 1 v 1 1 h -1 -1 z m 14,0 v -1 h 1 1 v 1 1 h -1 -1 z m 6,0 v -1 h 1 1 v 1 1 h -1 -1 z m 12,0 v -1 h 1 1 v 1 1 h -1 -1 z m 6,0 v -1 h 1 1 v 1 1 h -1 -1 z m 12,0 v -1 h 1 1 v 1 1 h -1 -1 z m 12,0 v -1 h 1 1 v 1 1 h -1 -1 z m 12,0 v -1 h 1 1 v 1 1 h -1 -1 z m 6,0 v -1 h 1 1 v 1 1 h -1 -1 z m 22,0 v -1 h 1 1 v 1 1 h -1 -1 z m 4,0 v -1 h 1 1 v 1 1 h -1 -1 z m 4,0 v -1 h 1 1 v 1 1 h -1 -1 z M 72,11 v -1 h 1 1 v 1 1 h -1 -1 z m 4,0 v -1 h 1 1 v 1 1 h -1 -1 z m 14,0 v -1 h 1 1 v 1 1 h -1 -1 z m 4,0 v -1 h 1 1 v 1 1 H 95 94 Z M 0,9 V 8 h 1 1 v 1 1 H 1 0 Z M 12,9 V 8 h 1 1 v 1 1 h -1 -1 z m 6,0 V 8 h 1 1 v 1 1 h -1 -1 z m 6,0 V 8 h 1 1 v 1 1 H 25 24 Z M 36,9 V 8 h 1 1 v 1 1 h -1 -1 z m 6,0 V 8 h 1 1 v 1 1 h -1 -1 z m 6,0 V 8 h 1 1 v 1 1 H 49 48 Z M 62,9 V 8 h 1 1 v 1 1 h -1 -1 z m 6,0 V 8 h 1 1 v 1 1 H 69 68 Z M 98,9 V 8 h 1 1 v 1 1 h -1 -1 z m 6,0 V 8 h 1 1 v 1 1 h -1 -1 z m 14,0 V 8 h 1 1 v 1 1 h -1 -1 z m 6,0 V 8 h 1 1 v 1 1 h -1 -1 z m 12,0 V 8 h 1 1 v 1 1 h -1 -1 z m 6,0 V 8 h 1 1 v 1 1 h -1 -1 z m 12,0 V 8 h 1 1 v 1 1 h -1 -1 z m 12,0 V 8 h 1 1 v 1 1 h -1 -1 z m 12,0 V 8 h 1 1 v 1 1 h -1 -1 z m 6,0 V 8 h 1 1 v 1 1 h -1 -1 z m 4,0 V 8 h 1 1 v 1 1 h -1 -1 z m 14,0 V 8 h 1 1 v 1 1 h -1 -1 z m 12,0 V 8 h 1 1 v 1 1 h -1 -1 z M 0,5 V 4 H 1 2 V 5 6 H 1 0 Z M 12,5 V 4 h 1 1 V 5 6 H 13 12 Z M 28,5 V 4 h 1 1 v 1 1 h -1 -1 z m 4,0 V 4 h 1 1 v 1 1 h -1 -1 z m 4,0 V 4 h 1 1 V 5 6 H 37 36 Z M 48,5 V 4 h 1 1 v 1 1 h -1 -1 z m 4,0 V 4 h 1 1 v 1 1 h -1 -1 z m 4,0 V 4 h 1 1 V 5 6 H 57 56 Z M 72,5 V 4 h 1 1 v 1 1 h -1 -1 z m 4,0 V 4 h 1 1 v 1 1 h -1 -1 z m 4,0 V 4 h 1 1 v 1 1 h -1 -1 z m 6,0 V 4 h 1 1 v 1 1 h -1 -1 z m 4,0 V 4 h 1 1 v 1 1 h -1 -1 z m 4,0 V 4 h 1 1 v 1 1 h -1 -1 z m 10,0 V 4 h 1 1 v 1 1 h -1 -1 z m 4,0 V 4 h 1 1 v 1 1 h -1 -1 z m 4,0 V 4 h 1 1 v 1 1 h -1 -1 z m 16,0 V 4 h 1 1 v 1 1 h -1 -1 z m 4,0 V 4 h 1 1 v 1 1 h -1 -1 z m 10,0 V 4 h 1 1 v 1 1 h -1 -1 z m 4,0 V 4 h 1 1 v 1 1 h -1 -1 z m 4,0 V 4 h 1 1 v 1 1 h -1 -1 z m 20,0 V 4 h 1 1 v 1 1 h -1 -1 z m 4,0 V 4 h 1 1 v 1 1 h -1 -1 z m 10,0 V 4 h 1 1 v 1 1 h -1 -1 z m 8,0 V 4 h 1 1 v 1 1 h -1 -1 z m 4,0 V 4 h 1 1 v 1 1 h -1 -1 z m 10,0 V 4 h 1 1 v 1 1 h -1 -1 z m 4,0 V 4 h 1 1 v 1 1 h -1 -1 z m 4,0 V 4 h 1 1 v 1 1 h -1 -1 z M 0,1 V 0 H 1 2 V 1 2 H 1 0 Z M 4,1 V 0 H 5 6 V 1 2 H 5 4 Z M 8,1 V 0 h 1 1 V 1 2 H 9 8 Z M 18,1 V 0 h 1 1 V 1 2 H 19 18 Z M 42,1 V 0 h 1 1 v 1 1 h -1 -1 z m 6,0 V 0 h 1 1 V 1 2 H 49 48 Z M 62,1 V 0 h 1 1 v 1 1 h -1 -1 z m 42,0 V 0 h 1 1 v 1 1 h -1 -1 z m 14,0 V 0 h 1 1 v 1 1 h -1 -1 z""
+                />
+            </svg>
+        </footer>
+    </body>
 </html>
