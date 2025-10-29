@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Contrast Checker</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .standard-toggle {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #f5f5f5;
+            padding: 10px 15px;
+            border-radius: 6px;
+        }
+        
+        .standard-toggle label {
+            font-weight: 600;
+            min-width: auto;
+        }
+        
+        .toggle-buttons {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .toggle-btn {
+            padding: 6px 16px;
+            border: 2px solid #007bff;
+            background: white;
+            color: #007bff;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        
+        .toggle-btn.active {
+            background: #007bff;
+            color: white;
+        }
+        
+        .toggle-btn:hover {
+            background: #e7f3ff;
+        }
+        
+        .toggle-btn.active:hover {
+            background: #0056b3;
+        }
+        
+        .preview {
+            padding: 40px;
+            border: 2px solid #ccc;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            min-height: 200px;
+        }
+        
+        .preview p {
+            margin-bottom: 1em;
+            font-size: 16px;
+        }
+        
+        .preview a {
+            text-decoration: underline;
+        }
+        
+        .controls {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .control-group {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .control-group:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .control-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+        
+        label {
+            font-weight: 600;
+            min-width: 100px;
+        }
+        
+        input[type="color"] {
+            width: 80px;
+            height: 40px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        input[type="text"] {
+            width: 100px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        
+        .lock-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .results {
+            background: white;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        
+        .result-item {
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .pass {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .fail {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .ratio {
+            font-weight: 600;
+            font-family: monospace;
+        }
+        
+        .fix-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 4px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+        
+        .fix-btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Link Contrast Checker</h1>
+            <div class="standard-toggle">
+                <label>Standard:</label>
+                <div class="toggle-buttons">
+                    <button class="toggle-btn active" id="btnAA">AA</button>
+                    <button class="toggle-btn" id="btnAAA">AAA</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="preview" id="preview">
+            <p>This is some sample text on the page. It should be readable against the background color you choose.</p>
+            <p>Here is <a href="#">a link in the text</a> that you can test for contrast. The link needs to be distinguishable from both the background and the regular text.</p>
+            <p>Another <a href="#">link example</a> to see how it looks in context.</p>
+        </div>
+        
+        <div class="controls">
+            <div class="control-group">
+                <div class="control-row">
+                    <label>Background:</label>
+                    <input type="color" id="bgColor" value="#ffffff">
+                    <input type="text" id="bgHex" value="#ffffff">
+                    <div class="lock-checkbox">
+                        <input type="checkbox" id="bgLock">
+                        <label for="bgLock" style="min-width: auto;">Lock</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="control-group">
+                <div class="control-row">
+                    <label>Text Color:</label>
+                    <input type="color" id="textColor" value="#000000">
+                    <input type="text" id="textHex" value="#000000">
+                    <div class="lock-checkbox">
+                        <input type="checkbox" id="textLock">
+                        <label for="textLock" style="min-width: auto;">Lock</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="control-group">
+                <div class="control-row">
+                    <label>Link Color:</label>
+                    <input type="color" id="linkColor" value="#0000ee">
+                    <input type="text" id="linkHex" value="#0000ee">
+                    <div class="lock-checkbox">
+                        <input type="checkbox" id="linkLock">
+                        <label for="linkLock" style="min-width: auto;">Lock</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="results" id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        const preview = document.getElementById('preview');
+        const bgColor = document.getElementById('bgColor');
+        const bgHex = document.getElementById('bgHex');
+        const textColor = document.getElementById('textColor');
+        const textHex = document.getElementById('textHex');
+        const linkColor = document.getElementById('linkColor');
+        const linkHex = document.getElementById('linkHex');
+        const results = document.getElementById('results');
+        const btnAA = document.getElementById('btnAA');
+        const btnAAA = document.getElementById('btnAAA');
+        
+        let currentStandard = 'AA';
+        
+        // Make functions global for onclick handlers
+        window.fixTextColor = fixTextColor;
+        window.fixLinkBgColor = fixLinkBgColor;
+        window.fixLinkTextColor = fixLinkTextColor;
+
+        function getLuminance(r, g, b) {
+            const [rs, gs, bs] = [r, g, b].map(c => {
+                c = c / 255;
+                return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+            });
+            return 0.2126 * rs + 0.7152 * gs + 0.0722 * bs;
+        }
+
+        function hexToRgb(hex) {
+            const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+            return result ? {
+                r: parseInt(result[1], 16),
+                g: parseInt(result[2], 16),
+                b: parseInt(result[3], 16)
+            } : null;
+        }
+
+        function getContrastRatio(color1, color2) {
+            const rgb1 = hexToRgb(color1);
+            const rgb2 = hexToRgb(color2);
+            const l1 = getLuminance(rgb1.r, rgb1.g, rgb1.b);
+            const l2 = getLuminance(rgb2.r, rgb2.g, rgb2.b);
+            const lighter = Math.max(l1, l2);
+            const darker = Math.min(l1, l2);
+            return (lighter + 0.05) / (darker + 0.05);
+        }
+
+        function updatePreview() {
+            const bg = bgHex.value;
+            const text = textHex.value;
+            const link = linkHex.value;
+            
+            preview.style.backgroundColor = bg;
+            preview.style.color = text;
+            const links = preview.querySelectorAll('a');
+            links.forEach(a => a.style.color = link);
+            
+            checkContrast(bg, text, link);
+        }
+
+        function rgbToHex(r, g, b) {
+            return "#" + [r, g, b].map(x => {
+                const hex = Math.round(x).toString(16);
+                return hex.length === 1 ? "0" + hex : hex;
+            }).join('');
+        }
+
+        function findAccessibleColor(fixColor, targetColor, requiredRatio) {
+            const target = hexToRgb(targetColor);
+            const targetLum = getLuminance(target.r, target.g, target.b);
+            
+            // Try to adjust lightness while keeping hue
+            const fix = hexToRgb(fixColor);
+            let bestColor = fixColor;
+            let bestDiff = Infinity;
+            
+            // Try darkening or lightening
+            for (let factor = 0; factor <= 2; factor += 0.05) {
+                const r = Math.min(255, Math.max(0, fix.r * factor));
+                const g = Math.min(255, Math.max(0, fix.g * factor));
+                const b = Math.min(255, Math.max(0, fix.b * factor));
+                
+                const testLum = getLuminance(r, g, b);
+                const lighter = Math.max(testLum, targetLum);
+                const darker = Math.min(testLum, targetLum);
+                const ratio = (lighter + 0.05) / (darker + 0.05);
+                
+                if (ratio >= requiredRatio) {
+                    const diff = Math.abs(factor - 1);
+                    if (diff < bestDiff) {
+                        bestDiff = diff;
+                        bestColor = rgbToHex(r, g, b);
+                    }
+                }
+            }
+            
+            return bestColor;
+        }
+
+        function fixTextColor() {
+            const requiredRatio = currentStandard === 'AAA' ? 7 : 4.5;
+            const newColor = findAccessibleColor(textHex.value, bgHex.value, requiredRatio);
+            textHex.value = newColor;
+            textColor.value = newColor;
+            updatePreview();
+        }
+
+        function fixLinkBgColor() {
+            const requiredRatio = currentStandard === 'AAA' ? 7 : 4.5;
+            const newColor = findAccessibleColor(linkHex.value, bgHex.value, requiredRatio);
+            linkHex.value = newColor;
+            linkColor.value = newColor;
+            updatePreview();
+        }
+
+        function fixLinkTextColor() {
+            const newColor = findAccessibleColor(linkHex.value, textHex.value, 3);
+            linkHex.value = newColor;
+            linkColor.value = newColor;
+            updatePreview();
+        }
+
+        function checkContrast(bg, text, link) {
+            const requiredRatio = currentStandard === 'AAA' ? 7 : 4.5;
+            
+            const textBgRatio = getContrastRatio(text, bg);
+            const linkBgRatio = getContrastRatio(link, bg);
+            const linkTextRatio = getContrastRatio(link, text);
+            
+            const textBgPass = textBgRatio >= requiredRatio;
+            const linkBgPass = linkBgRatio >= requiredRatio;
+            const linkTextPass = linkTextRatio >= 3;
+            
+            results.innerHTML = `
+                <div class="result-item ${textBgPass ? 'pass' : 'fail'}">
+                    Text/Background: <span class="ratio">${textBgRatio.toFixed(2)}:1</span> 
+                    ${textBgPass ? '✓ PASS' : '✗ FAIL'} (need ${requiredRatio}:1 for ${currentStandard})
+                    ${!textBgPass ? '<button class="fix-btn" onclick="fixTextColor()">Fix text color</button>' : ''}
+                </div>
+                <div class="result-item ${linkBgPass ? 'pass' : 'fail'}">
+                    Link/Background: <span class="ratio">${linkBgRatio.toFixed(2)}:1</span> 
+                    ${linkBgPass ? '✓ PASS' : '✗ FAIL'} (need ${requiredRatio}:1 for ${currentStandard})
+                    ${!linkBgPass ? '<button class="fix-btn" onclick="fixLinkBgColor()">Fix link color</button>' : ''}
+                </div>
+                <div class="result-item ${linkTextPass ? 'pass' : 'fail'}">
+                    Link/Text: <span class="ratio">${linkTextRatio.toFixed(2)}:1</span> 
+                    ${linkTextPass ? '✓ PASS' : '✗ FAIL'} (need 3:1)
+                    ${!linkTextPass ? '<button class="fix-btn" onclick="fixLinkTextColor()">Fix link color</button>' : ''}
+                </div>
+            `;
+        }
+
+        function syncColorPicker(hex, picker) {
+            hex.value = picker.value;
+            updatePreview();
+        }
+
+        function syncHexInput(picker, hex) {
+            const val = hex.value.trim();
+            if (/^#?[0-9A-F]{6}$/i.test(val)) {
+                const hexVal = val.startsWith('#') ? val : '#' + val;
+                picker.value = hexVal;
+                hex.value = hexVal;
+                updatePreview();
+            }
+        }
+
+        btnAA.addEventListener('click', () => {
+            currentStandard = 'AA';
+            btnAA.classList.add('active');
+            btnAAA.classList.remove('active');
+            updatePreview();
+        });
+
+        btnAAA.addEventListener('click', () => {
+            currentStandard = 'AAA';
+            btnAAA.classList.add('active');
+            btnAA.classList.remove('active');
+            updatePreview();
+        });
+
+        bgColor.addEventListener('input', (e) => syncColorPicker(bgHex, bgColor));
+        bgHex.addEventListener('input', (e) => syncHexInput(bgColor, bgHex));
+        bgHex.addEventListener('change', (e) => syncHexInput(bgColor, bgHex));
+        
+        textColor.addEventListener('input', (e) => syncColorPicker(textHex, textColor));
+        textHex.addEventListener('input', (e) => syncHexInput(textColor, textHex));
+        textHex.addEventListener('change', (e) => syncHexInput(textColor, textHex));
+        
+        linkColor.addEventListener('input', (e) => syncColorPicker(linkHex, linkColor));
+        linkHex.addEventListener('input', (e) => syncHexInput(linkColor, linkHex));
+        linkHex.addEventListener('change', (e) => syncHexInput(linkColor, linkHex));
+
+        updatePreview();
+    </script>
+</body>
+</html>

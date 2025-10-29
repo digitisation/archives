@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Minimal Readable CSS Demo</title>
+  <link rel="stylesheet" href="readable.css">
+</head>
+<body>
+  <main>
+    <h1>Minimal Readable CSS Demo</h1>
+
+    <p>
+      This page demonstrates how a few simple CSS rules can dramatically improve readability.
+      We focus on <strong>comfortable line length</strong>, <strong>clear hierarchy</strong>,
+      and <strong>consistent spacing</strong> — no frameworks needed.
+    </p>
+
+    <h2>1. Comfortable Measure</h2>
+    <p>
+      Each line is limited to about <em>70 characters</em> (<code>max-width: 70ch</code>).
+      That’s the sweet spot between too narrow (choppy reading) and too wide (eye fatigue).
+    </p>
+
+    <blockquote>
+      “The measure of line length should never be wider than the reader’s eyes can easily scan.”  
+      <br>— <cite>Robert Bringhurst, *The Elements of Typographic Style*</cite>
+    </blockquote>
+
+    <h2>2. Responsive Media</h2>
+    <p>
+      Images, SVGs, and videos scale automatically with the content width, so they never overflow or distort.
+    </p>
+
+    <img src="https://picsum.photos/800/300" alt="Sample landscape image">
+
+    <p>
+      Notice how the image always fits within the same readable column as the text.
+      The CSS rule <code>max-width: 100%</code> ensures it doesn’t break the layout.
+    </p>
+
+    <h2>3. Typography Hierarchy</h2>
+    <p>
+      Headings use tighter line spacing (<code>1.25</code>) to create a compact visual rhythm.
+      Paragraphs use a relaxed <code>1.6</code> line height for easy scanning.
+    </p>
+
+    <h3>Example Subheading</h3>
+    <p>
+      Hierarchy and spacing make sections obvious even without bold colors or borders.
+      Minimal CSS leverages white space — not decoration — for structure.
+    </p>
+
+    <h2>4. Lists and Code</h2>
+    <p>
+      Even simple lists and code blocks look balanced thanks to natural padding and typographic scale:
+    </p>
+
+    <ul>
+      <li>Readable measure (max-width)</li>
+      <li>Comfortable font sizing</li>
+      <li>Legible line spacing</li>
+      <li>Consistent vertical rhythm</li>
+    </ul>
+
+    <p>
+      Inline code looks clean too: <code>font-family: ui-monospace</code>.
+    </p>
+
+    <pre><code>/* Example CSS snippet */
+body {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  max-width: 70ch;
+}</code></pre>
+
+    <h2>5. Links and Color Scheme</h2>
+    <p>
+      Links use the browser’s native <code>LinkText</code> color, automatically adapting to light and dark mode:
+      <a href="#">this example link</a>.
+    </p>
+
+    <h2>6. Dark/Light Adaptation</h2>
+    <p>
+      Because the CSS uses <code>color-scheme: light dark</code> and system color keywords
+      (<code>Canvas</code>, <code>CanvasText</code>), this page automatically adapts to your OS theme.
+      Try switching your device between light and dark mode to see the effect.
+    </p>
+
+    <hr>
+
+    <p><small>Built with a single lightweight CSS file — readable, fast, and timeless.</small></p>
+  </main>
+</body>
+</html>

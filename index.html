@@ -1,4 +1,3 @@
-<!doctype html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -28,7 +27,6 @@
             body {
                 max-width: var(--max-width);
                 margin: 0; /* left-aligned page */
-                text-align: left;
             }
 
             /* Headings & intro */
@@ -39,24 +37,18 @@
             }
             h2 {
                 font-size: 1.05rem;
-                margin: 0 0 1.25rem;
+                margin: 0 0 0rem;
                 font-weight: 400;
                 opacity: 0.75;
             }
 
-            /* short tag line */
-            strong {
-                display: block;
-                margin: 1.25rem 0 0.5rem;
-            }
 
             /* content rhythm */
             p {
-                margin: 1rem 0;
+
             }
             hr {
                 border: 0;
-                border-top: 1px solid var(--line);
                 margin: 2rem 0;
             }
 
@@ -64,10 +56,8 @@
             ul {
                 list-style: none;
                 padding: 0;
-                margin: 1.25rem 0;
             }
             li {
-                margin: 0.45rem 0;
                 padding-left: 1rem;
                 position: relative;
             }
@@ -80,7 +70,7 @@
 
             /* quote (reworded and understated) */
             blockquote {
-                margin: 2rem 0 1.25rem;
+                margin: 0.5rem 0 1.25rem;
                 font-weight: 300;
                 opacity: 0.85;
                 font-style: normal;
@@ -105,13 +95,12 @@
 
             /* footer logo */
             footer {
-                margin-top: 3rem;
+                margin-top: 1rem;
                 padding-top: 1.5rem;
-                border-top: 1px solid var(--line);
             }
             footer svg {
-                display: block;
                 max-width: 216px;
+                padding-top: 1.5rem;
                 fill: currentColor;
                 opacity: 0.85;
             }
@@ -133,7 +122,6 @@
         <strong>Lightweight. Accessible. Sustainable.</strong>
         <p>Websites designed to last — fast, portable and human-readable.</p>
 
-        <hr />
 
         <ul>
             <li>Hand-coded with care and clarity</li>
@@ -143,12 +131,6 @@
             <li>Guided by 25 years in digital archives and the arts</li>
         </ul>
 
-        <hr />
-
-        <p>
-            Systems are refined with local AI to simplify and secure — using new
-            tools to make the simplest, most durable low-tech result.
-        </p>
         <p>
             Your system remains yours: clear, portable and built to age
             gracefully.
@@ -161,9 +143,7 @@
         >
 
         <footer>
-            <blockquote>Built to last. Easy to read. Simple to keep.</blockquote>
-
-            <!-- inline SVG (keeps one request, accessible) -->
+           <!-- inline SVG (keeps one request, accessible) -->
             <svg
                 viewBox="0 0 216 22"
                 role="img"
@@ -174,6 +154,9 @@
                     d="m 24,21 v -1 h 1 1 v 1 1 h -1 -1 z m 4,0 v -1 h 1 1 v 1 1 h -1 -1 z m 4,0 v -1 h 1 1 v 1 1 h -1 -1 z m 170,0 v -1 h 1 1 v 1 1 h -1 -1 z m 4,0 v -1 h 1 1 v 1 1 h -1 -1 z m 4,0 v -1 h 1 1 v 1 1 h -1 -1 z M 0,17 v -1 h 1 1 v 1 1 H 1 0 Z m 4,0 v -1 h 1 1 v 1 1 H 5 4 Z m 4,0 v -1 h 1 1 v 1 1 H 9 8 Z m 10,0 v -1 h 1 1 v 1 1 h -1 -1 z m 18,0 v -1 h 1 1 v 1 1 h -1 -1 z m 6,0 v -1 h 1 1 v 1 1 h -1 -1 z m 10,0 v -1 h 1 1 v 1 1 h -1 -1 z m 4,0 v -1 h 1 1 v 1 1 h -1 -1 z m 6,0 v -1 h 1 1 v 1 1 h -1 -1 z m 6,0 v -1 h 1 1 v 1 1 h -1 -1 z m 4,0 v -1 h 1 1 v 1 1 h -1 -1 z m 4,0 v -1 h 1 1 v 1 1 h -1 -1 z m 14,0 v -1 h 1 1 v 1 1 h -1 -1 z m 4,0 v -1 h 1 1 v 1 1 h -1 -1 z m 4,0 v -1 h 1 1 v 1 1 h -1 -1 z m 10,0 v -1 h 1 1 v 1 1 h -1 -1 z m 4,0 v -1 h 1 1 v 1 1 h -1 -1 z m 6,0 v -1 h 1 1 v 1 1 h -1 -1 z m 10,0 v -1 h 1 1 v 1 1 h -1 -1 z m 4,0 v -1 h 1 1 v 1 1 h -1 -1 z m 10,0 v -1 h 1 1 v 1 1 h -1 -1 z m 12,0 v -1 h 1 1 v 1 1 h -1 -1 z m 6,0 v -1 h 1 1 v 1 1 h -1 -1 z m 10,0 v -1 h 1 1 v 1 1 h -1 -1 z m 4,0 v -1 h 1 1 v 1 1 h -1 -1 z m 10,0 v -1 h 1 1 v 1 1 h -1 -1 z m 30,0 v -1 h 1 1 v 1 1 h -1 -1 z M 0,13 v -1 h 1 1 v 1 1 H 1 0 Z m 12,0 v -1 h 1 1 v 1 1 h -1 -1 z m 6,0 v -1 h 1 1 v 1 1 h -1 -1 z m 10,0 v -1 h 1 1 v 1 1 h -1 -1 z m 4,0 v -1 h 1 1 v 1 1 h -1 -1 z m 4,0 v -1 h 1 1 v 1 1 h -1 -1 z m 6,0 v -1 h 1 1 v 1 1 h -1 -1 z m 6,0 v -1 h 1 1 v 1 1 h -1 -1 z m 14,0 v -1 h 1 1 v 1 1 h -1 -1 z m 18,0 v -1 h 1 1 v 1 1 h -1 -1 z m 6,0 v -1 h 1 1 v 1 1 h -1 -1 z m 12,0 v -1 h 1 1 v 1 1 h -1 -1 z m 6,0 v -1 h 1 1 v 1 1 h -1 -1 z m 14,0 v -1 h 1 1 v 1 1 h -1 -1 z m 6,0 v -1 h 1 1 v 1 1 h -1 -1 z m 12,0 v -1 h 1 1 v 1 1 h -1 -1 z m 6,0 v -1 h 1 1 v 1 1 h -1 -1 z m 12,0 v -1 h 1 1 v 1 1 h -1 -1 z m 12,0 v -1 h 1 1 v 1 1 h -1 -1 z m 12,0 v -1 h 1 1 v 1 1 h -1 -1 z m 6,0 v -1 h 1 1 v 1 1 h -1 -1 z m 22,0 v -1 h 1 1 v 1 1 h -1 -1 z m 4,0 v -1 h 1 1 v 1 1 h -1 -1 z m 4,0 v -1 h 1 1 v 1 1 h -1 -1 z M 72,11 v -1 h 1 1 v 1 1 h -1 -1 z m 4,0 v -1 h 1 1 v 1 1 h -1 -1 z m 14,0 v -1 h 1 1 v 1 1 h -1 -1 z m 4,0 v -1 h 1 1 v 1 1 H 95 94 Z M 0,9 V 8 h 1 1 v 1 1 H 1 0 Z M 12,9 V 8 h 1 1 v 1 1 h -1 -1 z m 6,0 V 8 h 1 1 v 1 1 h -1 -1 z m 6,0 V 8 h 1 1 v 1 1 H 25 24 Z M 36,9 V 8 h 1 1 v 1 1 h -1 -1 z m 6,0 V 8 h 1 1 v 1 1 h -1 -1 z m 6,0 V 8 h 1 1 v 1 1 H 49 48 Z M 62,9 V 8 h 1 1 v 1 1 h -1 -1 z m 6,0 V 8 h 1 1 v 1 1 H 69 68 Z M 98,9 V 8 h 1 1 v 1 1 h -1 -1 z m 6,0 V 8 h 1 1 v 1 1 h -1 -1 z m 14,0 V 8 h 1 1 v 1 1 h -1 -1 z m 6,0 V 8 h 1 1 v 1 1 h -1 -1 z m 12,0 V 8 h 1 1 v 1 1 h -1 -1 z m 6,0 V 8 h 1 1 v 1 1 h -1 -1 z m 12,0 V 8 h 1 1 v 1 1 h -1 -1 z m 12,0 V 8 h 1 1 v 1 1 h -1 -1 z m 12,0 V 8 h 1 1 v 1 1 h -1 -1 z m 6,0 V 8 h 1 1 v 1 1 h -1 -1 z m 4,0 V 8 h 1 1 v 1 1 h -1 -1 z m 14,0 V 8 h 1 1 v 1 1 h -1 -1 z m 12,0 V 8 h 1 1 v 1 1 h -1 -1 z M 0,5 V 4 H 1 2 V 5 6 H 1 0 Z M 12,5 V 4 h 1 1 V 5 6 H 13 12 Z M 28,5 V 4 h 1 1 v 1 1 h -1 -1 z m 4,0 V 4 h 1 1 v 1 1 h -1 -1 z m 4,0 V 4 h 1 1 V 5 6 H 37 36 Z M 48,5 V 4 h 1 1 v 1 1 h -1 -1 z m 4,0 V 4 h 1 1 v 1 1 h -1 -1 z m 4,0 V 4 h 1 1 V 5 6 H 57 56 Z M 72,5 V 4 h 1 1 v 1 1 h -1 -1 z m 4,0 V 4 h 1 1 v 1 1 h -1 -1 z m 4,0 V 4 h 1 1 v 1 1 h -1 -1 z m 6,0 V 4 h 1 1 v 1 1 h -1 -1 z m 4,0 V 4 h 1 1 v 1 1 h -1 -1 z m 4,0 V 4 h 1 1 v 1 1 h -1 -1 z m 10,0 V 4 h 1 1 v 1 1 h -1 -1 z m 4,0 V 4 h 1 1 v 1 1 h -1 -1 z m 4,0 V 4 h 1 1 v 1 1 h -1 -1 z m 16,0 V 4 h 1 1 v 1 1 h -1 -1 z m 4,0 V 4 h 1 1 v 1 1 h -1 -1 z m 10,0 V 4 h 1 1 v 1 1 h -1 -1 z m 4,0 V 4 h 1 1 v 1 1 h -1 -1 z m 4,0 V 4 h 1 1 v 1 1 h -1 -1 z m 20,0 V 4 h 1 1 v 1 1 h -1 -1 z m 4,0 V 4 h 1 1 v 1 1 h -1 -1 z m 10,0 V 4 h 1 1 v 1 1 h -1 -1 z m 8,0 V 4 h 1 1 v 1 1 h -1 -1 z m 4,0 V 4 h 1 1 v 1 1 h -1 -1 z m 10,0 V 4 h 1 1 v 1 1 h -1 -1 z m 4,0 V 4 h 1 1 v 1 1 h -1 -1 z m 4,0 V 4 h 1 1 v 1 1 h -1 -1 z M 0,1 V 0 H 1 2 V 1 2 H 1 0 Z M 4,1 V 0 H 5 6 V 1 2 H 5 4 Z M 8,1 V 0 h 1 1 V 1 2 H 9 8 Z M 18,1 V 0 h 1 1 V 1 2 H 19 18 Z M 42,1 V 0 h 1 1 v 1 1 h -1 -1 z m 6,0 V 0 h 1 1 V 1 2 H 49 48 Z M 62,1 V 0 h 1 1 v 1 1 h -1 -1 z m 42,0 V 0 h 1 1 v 1 1 h -1 -1 z m 14,0 V 0 h 1 1 v 1 1 h -1 -1 z""
                 />
             </svg>
+            <blockquote>Built to last. Easy on the eye. Simple to keep</blockquote>
+
+ 
         </footer>
     </body>
 </html>

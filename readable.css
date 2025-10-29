@@ -1,0 +1,73 @@
+/* === Base reset === */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: light dark; /* enables auto dark/light colors in supporting browsers */
+  font-size: 100%; /* keep base size scalable by user preference */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 1.125rem; /* ~18px default — comfortable reading size */
+  line-height: 1.6; /* readable line spacing */
+  color: CanvasText; /* adapts with color-scheme */
+  background: Canvas; /* adapts with color-scheme */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* === Content layout === */
+main {
+  max-width: 70ch; /* ideal line length (~70 characters) */
+  margin-inline: auto;
+  padding: 2rem 1rem;
+}
+
+/* === Typography === */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.25;
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+}
+
+p, ul, ol, pre, blockquote {
+  margin-bottom: 1.25em;
+}
+
+a {
+  color: LinkText;
+  text-decoration-thickness: 0.1em;
+  text-underline-offset: 0.15em;
+}
+a:hover {
+  text-decoration-thickness: 0.15em;
+}
+
+/* === Media === */
+img, svg, video {
+  display: block;
+  max-width: 100%; /* prevent overflow in small screens */
+  height: auto;    /* maintain correct aspect ratio */
+}
+
+/* === Miscellaneous === */
+pre, code {
+  font-family: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 0.95em;
+}
+
+/* Optional: give lists some breathing room */
+ul, ol {
+  padding-left: 1.25em;
+}
+
+/* Optional: gentle borders for blockquotes */
+blockquote {
+  border-left: 0.25rem solid hsl(0 0% 70% / 0.4);
+  padding-left: 1em;
+  color: hsl(0 0% 30%);
+}
